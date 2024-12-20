@@ -19,12 +19,15 @@ public class Book {
     private LocalDate releaseDate;
     private boolean stockStatus;
 
+    public Book(){
+        this.releaseDate = LocalDate.now();
+    }
 
     public Book(String name, LocalDate releaseDate, boolean stockStatus){
 
         this.name = name;
         this.stockStatus = stockStatus;
-        this.releaseDate = releaseDate;
+        this.releaseDate = LocalDate.now();
     }
 
     public Long getId() {
@@ -58,4 +61,9 @@ public class Book {
     public void setStockStatus(boolean stockStatus) {
         this.stockStatus = stockStatus;
     }
+
+    public String getStockStatus(){
+        return stockStatus ? "In Stock" : "Out of Stock";
+    }
+
 }
