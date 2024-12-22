@@ -28,11 +28,10 @@ public class BookService {
 
     public boolean deleteBookById(Long id){
         if (bookRepository.existsById(id)){
-            deleteBookById(id);
+            bookRepository.deleteById(id);
             return true;
         }
         return false;
     }
-
 
 }
