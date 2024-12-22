@@ -15,9 +15,7 @@ public class BookService {
     private BookRepository bookRepository;
 
     public Book registerBook(Book book){
-
         return bookRepository.save(book);
-
     }
 
     public List<Book> getAllBooks(){
@@ -30,10 +28,11 @@ public class BookService {
 
     public boolean deleteBookById(Long id){
         if (bookRepository.existsById(id)){
-            bookRepository.deleteById(id);
+            deleteBookById(id);
             return true;
         }
         return false;
     }
+
 
 }

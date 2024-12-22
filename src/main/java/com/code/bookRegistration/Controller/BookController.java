@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/book")
@@ -15,20 +16,28 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-   @PostMapping("/register")
-   public ResponseEntity<Book> registerBook(@RequestBody Book book){
-       Book  Registeredbook = bookService.registerBook(book);
-       return ResponseEntity.ok(Registeredbook);
-   }
+    @PostMapping("/register")
+    public ResponseEntity<Book> registerBook(@RequestBody Book book){
+        Book registeredBook = bookService.registerBook(book);
+        return ResponseEntity.ok(registeredBook);
+    }
 
-   @GetMapping
+    @GetMapping
     public ResponseEntity<List<Book>> getAllBooks(){
-       List<Book> books =  bookService.getAllBooks();
-       if (books.isEmpty()){
-           return ResponseEntity.noContent().build();
+        List<Book> books = bookService.getAllBooks();
+        if (books.isEmpty()){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(books);
+    }
 
-       }
-       return ResponseEntity.ok(books);
-   }
+    @GetMapping("/{id}")
+    public ResponseEntity<Book> getBookById(@PathVariable Long id){
+        return bookService.getBookById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    
 
 }
