@@ -29,8 +29,7 @@ public class Book {
         this.stockStatus = stockStatus;
         this.releaseDate = LocalDate.now();
         this.quantity = quantity;
-
-    }
+}
 
     public Long getId() {
         return id;
