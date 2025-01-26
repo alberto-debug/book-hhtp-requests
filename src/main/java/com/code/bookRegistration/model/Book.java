@@ -1,4 +1,5 @@
 package com.code.bookRegistration.model;
+
 import jakarta.persistence.*;
 import org.springframework.stereotype.Service;
 
@@ -18,18 +19,17 @@ public class Book {
     private boolean stockStatus;
     private int quantity;
 
-    public Book(){
+    public Book() {
         this.releaseDate = LocalDate.now();
     }
 
-    public Book(String name, LocalDate releaseDate, boolean stockStatus, int quantity){
+    public Book(String name, LocalDate releaseDate, boolean stockStatus, int quantity) {
 
         this.name = name;
         this.stockStatus = stockStatus;
         this.releaseDate = LocalDate.now();
         this.quantity = quantity;
     }
-
 
     public Long getId() {
         return id;
@@ -71,11 +71,11 @@ public class Book {
         this.quantity = quantity;
     }
 
-    public String getStockStatus(){
+    public String getStockStatus() {
         return stockStatus ? "In Stock" : "Out of Stock";
     }
 
-    public String getQuantityNumber(){
+    public String getQuantityNumber() {
         return "you have " + quantity + " Books in Stock";
     }
 
