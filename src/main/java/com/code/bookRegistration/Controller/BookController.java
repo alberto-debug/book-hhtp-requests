@@ -21,7 +21,6 @@ public class BookController {
     public ResponseEntity<Book> registerBook(@RequestBody Book book) {
         Book registeredBook = bookService.registerBook(book);
         return ResponseEntity.ok(registeredBook);
-
     }
 
     @GetMapping
